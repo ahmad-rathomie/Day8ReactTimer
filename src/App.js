@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {useTimer} from 'use-timer'
+import "./App.css"
 
 function App() {
+
+  const {time, start, pause, reset, status}  =useTimer();
+
+  const miliseconds = Math.floor(time * 10) % 10
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <><center>
+    <div>
+    <p>Start time :{time}s, {miliseconds} ms</p>
+
+      <button onClick={start}>Start</button>
+      <button onClick={pause}>Pause</button>
+      <button onClick={reset} >Reset</button>
+     
+      </div>
+     
+      {status ==="RUNNING" && <p>Running...</p>}
+     
+      
+      </center></>
+    
+  )
 }
 
-export default App;
+export default App
